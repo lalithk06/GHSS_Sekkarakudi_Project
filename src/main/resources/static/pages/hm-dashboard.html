@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HM Dashboard</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/dashboard.css" />
+<link rel="stylesheet" href="../css/tables.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="page-header">
+      <div>
+        <h1>Headmaster Dashboard</h1>
+        <p>Overview of the entire school.</p>
+      </div>
+    </div>
+
+    <div id="stats-region"><div class="state-block"><div class="spinner"></div>Loading dashboard...</div></div>
+
+    <div class="dash-columns">
+      <div class="card">
+        <div class="card-title-row"><h2>Browse by Standard</h2></div>
+        <div class="tile-grid">
+          <div class="tile-card" onclick="location.href='standard.html?std=10'">
+            <div class="tile-icon">📘</div>
+            <div class="tile-label">10th Standard</div>
+            <div class="tile-sub">Sections A - D</div>
+          </div>
+          <div class="tile-card" onclick="location.href='standard.html?std=12'">
+            <div class="tile-icon">🎓</div>
+            <div class="tile-label">12th Standard</div>
+            <div class="tile-sub">4 groups</div>
+          </div>
+        </div>
+        <div class="section-divider"></div>
+        <div class="card-title-row"><h2>Students per Section/Group</h2></div>
+        <div id="section-breakdown"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title-row"><h2>Quick Links</h2></div>
+        <div class="flex" style="flex-direction:column; gap:10px;">
+          <a class="btn btn-secondary btn-block" href="students.html?scope=all">👤 Search all students</a>
+          <a class="btn btn-secondary btn-block" href="teachers.html">🧑‍🏫 View teachers</a>
+          <a class="btn btn-secondary btn-block" href="rankings.html">🏆 View rankings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/hm.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Attendance History</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/tables.css" />
+<link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="page-header">
+      <div>
+        <h1>Attendance History</h1>
+        <p>View a student's day-by-day attendance record.</p>
+      </div>
+    </div>
+
+    <div class="card mb-16">
+      <label for="student-select">Select Student</label>
+      <select id="student-select" style="max-width:340px;"></select>
+    </div>
+
+    <div id="history-region"></div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/attendance-history.js"></script>
+</body>
+</html>

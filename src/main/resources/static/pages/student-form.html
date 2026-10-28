@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Form</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="breadcrumb"><a href="students.html">Students</a> <span class="sep">/</span> <span id="crumb-current">Add Student</span></div>
+    <div class="page-header">
+      <div>
+        <h1 id="form-title">Add Student</h1>
+        <p>Fill in the student's details below.</p>
+      </div>
+    </div>
+
+    <div class="card" style="max-width:760px;">
+      <form id="student-form" novalidate>
+        <div class="form-section-title">Personal Information</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" name="name" required />
+            <div class="field-error" data-error-for="name"></div>
+          </div>
+          <div class="form-group">
+            <label>Admission Number <span class="req">*</span></label>
+            <input type="text" name="admissionNumber" required />
+            <div class="field-error" data-error-for="admissionNumber"></div>
+          </div>
+          <div class="form-group">
+            <label>Register Number</label>
+            <input type="text" name="registerNumber" />
+          </div>
+          <div class="form-group">
+            <label>EMIS Number</label>
+            <input type="text" name="emisNumber" maxlength="20" />
+          </div>
+          <div class="form-group">
+            <label>Date of Birth <span class="req">*</span></label>
+            <input type="date" name="dob" required />
+            <div class="field-error" data-error-for="dob"></div>
+          </div>
+          <div class="form-group">
+            <label>Gender <span class="req">*</span></label>
+            <select name="gender" required>
+              <option value="">Select gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
+            <div class="field-error" data-error-for="gender"></div>
+          </div>
+          <div class="form-group">
+            <label>Aadhaar Number</label>
+            <input type="text" name="aadhaarNumber" />
+          </div>
+          <div class="form-group">
+            <label>Student Photo</label>
+            <input type="file" name="photo" accept=".jpg,.jpeg,.png" />
+          </div>
+        </div>
+
+        <div class="form-section-title">Parent / Guardian Information</div>
+        <div class="form-row">
+          <div class="form-group"><label>Father's Name</label><input type="text" name="fatherName" /></div>
+          <div class="form-group"><label>Mother's Name</label><input type="text" name="motherName" /></div>
+          <div class="form-group"><label>Guardian</label><input type="text" name="guardianName" /></div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="parentPhone" />
+            <div class="field-error" data-error-for="parentPhone"></div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="parentEmail" />
+            <div class="field-error" data-error-for="parentEmail"></div>
+          </div>
+        </div>
+        <div class="form-group"><label>Address</label><textarea name="address"></textarea></div>
+
+        <div class="form-section-title">Academic Information</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Standard <span class="req">*</span></label>
+            <select name="standardId" id="standard-select" required>
+              <option value="">Select standard</option>
+            </select>
+            <div class="field-error" data-error-for="standardId"></div>
+          </div>
+          <div class="form-group">
+            <label>Section/Group <span class="req">*</span></label>
+            <select name="sectionGroupId" id="section-select" required>
+              <option value="">Select standard first</option>
+            </select>
+            <div class="field-error" data-error-for="sectionGroupId"></div>
+          </div>
+        </div>
+
+        <div id="form-alert"></div>
+        <div class="form-actions">
+          <a class="btn btn-secondary" href="students.html">Cancel</a>
+          <button type="submit" class="btn btn-primary" id="save-btn">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/academic.js"></script>
+<script src="../js/student-form.js"></script>
+</body>
+</html>

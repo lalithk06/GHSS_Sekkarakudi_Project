@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Assignments</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/tables.css" />
+<link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="page-header">
+      <div>
+        <h1>Assignments</h1>
+        <p>Assign class teachers and subject teachers to sections/groups.</p>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="ct">Class Teacher Assignments</button>
+      <button class="tab-btn" data-tab="st">Subject Teacher Assignments</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-ct">
+      <div class="card mb-16">
+        <h3>Assign Class Teacher</h3>
+        <div id="ct-form-error"></div>
+        <form id="ct-form" class="form-row" novalidate>
+          <div class="form-group">
+            <label>Standard</label>
+            <select id="ct-standard" required></select>
+          </div>
+          <div class="form-group">
+            <label>Section</label>
+            <select id="ct-section" required></select>
+          </div>
+          <div class="form-group">
+            <label>Teacher</label>
+            <select id="ct-teacher" required></select>
+          </div>
+          <div class="form-group" style="align-self:flex-end;">
+            <button type="submit" class="btn btn-primary w-full">Assign Class Teacher</button>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Current Class Teacher Assignments</h3>
+        <div id="ct-table"><div class="state-block"><div class="spinner"></div>Loading...</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-st">
+      <div class="card mb-16">
+        <h3>Assign Subject Teacher</h3>
+        <div id="st-form-error"></div>
+        <form id="st-form" class="form-row" novalidate>
+          <div class="form-group">
+            <label>Standard</label>
+            <select id="st-standard" required></select>
+          </div>
+          <div class="form-group">
+            <label>Section/Group</label>
+            <select id="st-section" required></select>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="st-subject" required></select>
+            <div id="st-subject-hint" style="font-size:12.5px; margin-top:4px;"></div>
+          </div>
+          <div class="form-group">
+            <label>Teacher</label>
+            <select id="st-teacher" required></select>
+          </div>
+          <div class="form-group" style="align-self:flex-end;">
+            <button type="submit" class="btn btn-primary w-full" id="st-submit-btn">Assign Subject Teacher</button>
+          </div>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Current Subject Teacher Assignments</h3>
+        <div id="st-table"><div class="state-block"><div class="spinner"></div>Loading...</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/academic.js"></script>
+<script src="../js/assignments.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: school-management-backend
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/school_management?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: true
+        # Lets lazy relations (teacher.user, section.standard, ...) load even when
+        # the Hibernate session is already closed. This fixes the "4 record(s) could
+        # not be read" popup and empty Sections/Teachers lists.
+        enable_lazy_load_no_trans: true
+    # Every entity relation in this app (Teacher->User, Student->Standard/
+    # SectionGroup, Mark->Student/Subject/Exam, etc.) is deliberately
+    # FetchType.LAZY. Controllers build response DTOs by reading those
+    # relations (e.g. teacher.getUser().getUsername()) AFTER the repository
+    # call returns. With open-in-view=false the Hibernate session closes the
+    # instant the repository call returns, so any such access throws
+    # LazyInitializationException - which the global exception handler masks
+    # as a generic 500 ("An unexpected error occurred"). Keeping the session
+    # open for the life of the request is what makes those DTO conversions
+    # work correctly across every controller in the app.
+    open-in-view: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: ${MAX_FILE_SIZE:10MB}
+      max-request-size: ${MAX_REQUEST_SIZE:15MB}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-long-random-secret-value-at-least-256-bits}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  file:
+    upload-dir: ${FILE_UPLOAD_DIRECTORY:./uploads}
+    allowed-types: image/jpeg,image/png,image/jpg,application/pdf
+    max-size-bytes: ${MAX_DOCUMENT_SIZE_BYTES:5242880}
+
+logging:
+  level:
+    com.school.app: INFO
+    org.springframework.security: WARN

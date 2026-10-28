@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Section Detail</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/dashboard.css" />
+<link rel="stylesheet" href="../css/tables.css" />
+<link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="breadcrumb">
+      <a href="hm-dashboard.html">Dashboard</a> <span class="sep">/</span>
+      <a id="crumb-std" href="#">Standard</a> <span class="sep">/</span>
+      <span id="crumb-section">Section</span>
+    </div>
+    <div class="page-header">
+      <div>
+        <h1 id="section-title">Section</h1>
+        <p>Class overview, ranking and performance.</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-secondary" id="view-students-btn" href="#">👤 View all students</a>
+      </div>
+    </div>
+
+    <div class="stat-grid" id="section-stats">
+      <div class="state-block"><div class="spinner"></div>Loading section...</div>
+    </div>
+
+    <div class="card">
+      <div class="table-toolbar"><h2 class="mb-0">Subjects &amp; Teachers</h2></div>
+      <div id="subjects-region"><div class="state-block"><div class="spinner"></div>Loading subjects...</div></div>
+    </div>
+
+    <div class="card">
+      <div class="table-toolbar">
+        <h2 class="mb-0">Ranking</h2>
+        <div class="filters">
+          <select id="exam-select" style="min-width:200px;"></select>
+        </div>
+      </div>
+      <div id="ranking-region"><div class="state-block"><div class="spinner"></div>Loading rankings...</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/academic.js"></script>
+<script src="../js/section-detail.js"></script>
+</body>
+</html>

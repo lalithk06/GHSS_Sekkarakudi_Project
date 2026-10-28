@@ -1,0 +1,187 @@
+{
+  "info": {
+    "name": "School Management Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "adminToken", "value": "" },
+    { "key": "classTeacherToken", "value": "" },
+    { "key": "subjectTeacherToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth - Login as Admin",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"admin\",\"password\":\"Admin@123\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const data = pm.response.json();",
+              "pm.collectionVariables.set('adminToken', data.data.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Standards - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+        "url": "{{baseUrl}}/api/standards"
+      }
+    },
+    {
+      "name": "Sections - List for Standard 10",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+        "url": "{{baseUrl}}/api/sections?standardId=1"
+      }
+    },
+    {
+      "name": "Teachers - Create Class Teacher",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/api/teachers",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"ct_a\",\"password\":\"Passw0rd!\",\"role\":\"CLASS_TEACHER\",\"fullName\":\"Kavitha R\"}"
+        }
+      }
+    },
+    {
+      "name": "Assignments - Assign Class Teacher to Section",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/api/class-teacher-assignments",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"teacherId\":1,\"sectionGroupId\":1}"
+        }
+      }
+    },
+    {
+      "name": "Auth - Login as Class Teacher",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\":\"ct_a\",\"password\":\"Passw0rd!\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const data = pm.response.json();",
+              "pm.collectionVariables.set('classTeacherToken', data.data.token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{classTeacherToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/api/students",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"admissionNumber\":\"ADM001\",\"name\":\"Arun Kumar\",\"dob\":\"2010-06-15\",\"gender\":\"MALE\",\"standardId\":1,\"sectionGroupId\":1}"
+        }
+      }
+    },
+    {
+      "name": "Students - Search",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{classTeacherToken}}" }],
+        "url": "{{baseUrl}}/api/students?search=Arun"
+      }
+    },
+    {
+      "name": "Documents - Upload (multipart)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{classTeacherToken}}" }],
+        "url": "{{baseUrl}}/api/students/1/documents?documentType=STUDENT_PHOTO",
+        "body": {
+          "mode": "formdata",
+          "formdata": [{ "key": "file", "type": "file", "src": "" }]
+        }
+      }
+    },
+    {
+      "name": "Class Attendance - Submit",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{classTeacherToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/api/class-attendance",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"sectionGroupId\":1,\"date\":\"2026-09-13\",\"entries\":[{\"studentId\":1,\"status\":\"PRESENT\"}]}"
+        }
+      }
+    },
+    {
+      "name": "Marks - Enter (as Subject Teacher)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{subjectTeacherToken}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/api/marks",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"studentId\":1,\"subjectId\":1,\"examId\":1,\"marksObtained\":85,\"maxMarks\":100}"
+        }
+      }
+    },
+    {
+      "name": "Rankings - Class",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+        "url": "{{baseUrl}}/api/rankings/class/1?examId=1"
+      }
+    },
+    {
+      "name": "Dashboard - Admin",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+        "url": "{{baseUrl}}/api/dashboard/admin"
+      }
+    }
+  ]
+}

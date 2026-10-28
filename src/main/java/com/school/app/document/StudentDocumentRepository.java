@@ -1,0 +1,10 @@
+package com.school.app.document;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface StudentDocumentRepository extends JpaRepository<StudentDocument, Long> {
+    boolean existsByUploadedById(Long userId);
+    List<StudentDocument> findByStudentId(Long studentId);
+}

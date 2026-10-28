@@ -1,0 +1,52 @@
+.form-group { margin-bottom: 16px; }
+.form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+
+label {
+  display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--color-text);
+}
+label .req { color: var(--color-danger); }
+
+input[type="text"], input[type="password"], input[type="email"], input[type="date"],
+input[type="number"], input[type="tel"], input[type="file"], select, textarea {
+  width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border); font-size: 14px; font-family: inherit;
+  background: var(--color-surface); color: var(--color-text);
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(41,82,227,0.12);
+}
+input.input-error, select.input-error, textarea.input-error {
+  border-color: var(--color-danger);
+}
+textarea { resize: vertical; min-height: 72px; }
+
+.field-error { color: var(--color-danger); font-size: 12px; margin-top: 5px; display: none; }
+.field-error.show { display: block; }
+
+.form-section-title {
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--color-text-faint); margin: 22px 0 12px; padding-top: 6px; border-top: 1px solid var(--color-border);
+}
+.form-section-title:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+
+.radio-row, .checkbox-row { display: flex; align-items: center; gap: 8px; }
+.radio-row input, .checkbox-row input { width: auto; }
+
+.file-drop {
+  border: 2px dashed var(--color-border); border-radius: var(--radius-md);
+  padding: 20px; text-align: center; color: var(--color-text-muted); font-size: 13px;
+  cursor: pointer; background: #fafbfd;
+}
+.file-drop:hover { border-color: var(--color-primary); }
+
+.attendance-toggle { display: flex; gap: 6px; }
+.attendance-toggle button {
+  flex: 1; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--color-border);
+  background: var(--color-surface); font-size: 12.5px; font-weight: 700; cursor: pointer; color: var(--color-text-muted);
+}
+.attendance-toggle button.status-present.active { background: var(--color-success-light); border-color: var(--color-success); color: var(--color-success); }
+.attendance-toggle button.status-absent.active { background: var(--color-danger-light); border-color: var(--color-danger); color: var(--color-danger); }
+
+.marks-input { width: 90px; }

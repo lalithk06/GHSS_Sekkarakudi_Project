@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Teachers</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/tables.css" />
+<link rel="stylesheet" href="../css/forms.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="page-header">
+      <div>
+        <h1>Teachers</h1>
+        <p>Manage class and subject teacher accounts.</p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary hidden" id="add-teacher-btn">➕ Add Teacher</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-toolbar">
+        <div class="search-input-wrap">
+          <span class="ic">🔍</span>
+          <input type="text" id="search-input" placeholder="Search by name or username" />
+        </div>
+        <div class="filters">
+          <select id="role-filter">
+            <option value="">All Teachers</option>
+            <option value="CLASS_TEACHER">Class Teachers</option>
+            <option value="SUBJECT_TEACHER">Other Teachers</option>
+          </select>
+        </div>
+      </div>
+      <div id="teachers-region"><div class="state-block"><div class="spinner"></div>Loading teachers...</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/teachers.js"></script>
+</body>
+</html>

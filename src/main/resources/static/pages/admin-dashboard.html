@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+<div class="app-shell" id="app-shell">
+  <div id="page-content">
+    <div class="page-header">
+      <div>
+        <h1>Admin Dashboard</h1>
+        <p>Manage teachers, assignments and academic structure.</p>
+      </div>
+    </div>
+    <div id="stats-region"><div class="state-block"><div class="spinner"></div>Loading dashboard...</div></div>
+    <div class="card">
+      <div class="card-title-row"><h2 class="mb-0">Today's Attendance by Section/Group</h2></div>
+      <p>Live from each class teacher's daily attendance submission.</p>
+      <div id="attendance-today"><div class="state-block"><div class="spinner"></div>Loading...</div></div>
+    </div>
+
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="tile-grid">
+        <div class="tile-card" onclick="location.href='teachers.html'">
+          <div class="tile-icon">🧑‍🏫</div>
+          <div class="tile-label">Manage Teachers</div>
+        </div>
+        <div class="tile-card" onclick="location.href='assignments.html'">
+          <div class="tile-icon">📋</div>
+          <div class="tile-label">Assignments</div>
+        </div>
+        <div class="tile-card" onclick="location.href='academic-setup.html'">
+          <div class="tile-icon">🏫</div>
+          <div class="tile-label">Academic Setup</div>
+        </div>
+        <div class="tile-card" onclick="location.href='students.html?scope=all'">
+          <div class="tile-icon">👤</div>
+          <div class="tile-label">Students</div>
+        </div>
+        <div class="tile-card" onclick="location.href='student-form.html'">
+          <div class="tile-icon">➕</div>
+          <div class="tile-label">Add Student</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<div id="modal-root"></div>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>
